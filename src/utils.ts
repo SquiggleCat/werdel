@@ -133,6 +133,7 @@ export const modeData: ModeData = {
 			seed: newSeed(GameMode.daily),
 			historical: false,
 			streak: true,
+			wordOverride: '',
 		},
 		{
 			name: "Hourly",
@@ -142,6 +143,7 @@ export const modeData: ModeData = {
 			historical: false,
 			icon: "m50,7h100v33c0,40 -35,40 -35,60c0,20 35,20 35,60v33h-100v-33c0,-40 35,-40 35,-60c0,-20 -35,-20 -35,-60z",
 			streak: true,
+			wordOverride: '',
 		},
 		{
 			name: "Infinite",
@@ -150,6 +152,7 @@ export const modeData: ModeData = {
 			seed: newSeed(GameMode.infinite),
 			historical: false,
 			icon: "m7,100c0,-50 68,-50 93,0c25,50 93,50 93,0c0,-50 -68,-50 -93,0c-25,50 -93,50 -93,0z",
+			wordOverride: '',
 		}
 	]
 };

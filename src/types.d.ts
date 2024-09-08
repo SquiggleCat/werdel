@@ -104,6 +104,7 @@ type Mode = {
 	historical: boolean,
 	icon?: string,
 	streak?: boolean,
+	wordOverride: string,
 };
 
 type HardModeData = {

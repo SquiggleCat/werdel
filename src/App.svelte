@@ -33,16 +33,28 @@
 		: parseInt(localStorage.getItem("mode")) || modeData.default;
 	mode.set(modeVal);
 	// If this is a link to a specific word make sure that that is the word
+	modeData.modes[modeVal].historical = true;
 	if (!isNaN(parseInt(hash[1])) && parseInt(hash[1]) < getWordNumber(modeVal)) {
 		modeData.modes[modeVal].seed =
 			(parseInt(hash[1]) - 1) * modeData.modes[modeVal].unit + modeData.modes[modeVal].start;
-		modeData.modes[modeVal].historical = true;
 	}
+	// also allow putting the word itself after the slash (for debugging purposes)
+	else if (words.contains(hash[1])) {
+		modeData.modes[modeVal].wordOverride = hash[1];
+	}
+	// if this branch runs, it means no word has been manually set, so turn off the historical flag
+	else modeData.modes[modeVal].historical = false;
 	mode.subscribe((m) => {
 		localStorage.setItem("mode", `${m}`);
 		window.location.hash = GameMode[m];
 		stats = (JSON.parse(localStorage.getItem(`stats-${m}`)) as Stats) || createDefaultStats(m);
-		word = words.words[seededRandomInt(0, words.words.length, modeData.modes[m].seed)];
+		// if a word has been entered by name (rather than number), choose it
+		const override = modeData.modes[modeVal].wordOverride;
+		if (modeData.modes[modeVal].historical && override != '') {
+			word = override;
+			modeData.modes[modeVal].wordOverride = '';
+		}
+		else word = words.words[seededRandomInt(0, words.words.length, modeData.modes[m].seed)];
 		let temp: GameState;
 		if (modeData.modes[m].historical === true) {
 			temp = JSON.parse(localStorage.getItem(`state-${m}-h`));
