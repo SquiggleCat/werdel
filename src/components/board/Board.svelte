@@ -34,13 +34,12 @@
 
 			const match = getRowData(num, board);
 			pAns = words.words.filter((w) => match(w)).length;
-			pSols = pAns + words.valid.filter((w) => match(w)).length;
 		}
 	}
 </script>
 
 {#if showCtx}
-	<ContextMenu {pAns} {pSols} {x} {y} {word} />
+	<ContextMenu {pAns} {x} {y} {word} />
 {/if}
 
 <div class="board">

@@ -59,10 +59,8 @@
 			<span slot="desc">The game mode determines how often the word refreshes</span>
 		</Setting>
 		<div class="links">
-			<a href="https://github.com/bennw/werdel" target="_blank">Leave a ⭐</a>
-			<a href="https://github.com/bennw/werdel/issues" target="_blank">Report a Bug</a>
+			<a href="https://github.com/squigglecat/werdel/issues" target="_blank">Report a Bug</a>
 		</div>
-		<Tips index={tip} />
 	</div>
 	<div class="footer">
 		<a href="https://mikhad.github.io/wordle/" target="_blank">Wordle+ by MikhaD</a>

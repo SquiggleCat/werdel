@@ -7,7 +7,7 @@
 	import Settings from "./settings";
 	import {
 		Share,
-		Seperator,
+		Separator,
 		Definition,
 		Tutorial,
 		Statistics,
@@ -203,7 +203,7 @@
 		<Statistics data={stats} />
 		<Distribution distribution={stats.guesses} guesses={game.guesses} active={game.active} />
 	{/if}
-	<Seperator visible={!game.active}>
+	<Separator visible={!game.active}>
 		<Timer
 			slot="1"
 			bind:this={timer}
@@ -211,7 +211,7 @@
 			on:reload={reload}
 		/>
 		<Share slot="2" state={game} />
-	</Seperator>
+	</Separator>
 	<ShareGame wordNumber={game.wordNumber} />
 	{#if !game.active}
 		<Definition {word} alternates={2} />
