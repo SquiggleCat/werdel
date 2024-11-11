@@ -72,7 +72,9 @@ export function getRowData(n: number, board: GameBoard) {
 	for (let i = 0; i < COLS; ++i) {
 		exp += wordData.letters[i].val
 			? wordData.letters[i].val
-			: `[^${[...wordData.not, ...wordData.letters[i].not].join(" ")}]`;
+			// because long vowels can be multiple characters, ensure it matches none of the possibilites via negative lookaheads and wildcards
+			// this is equivalent to [^whatever], which works on individual characters
+			: `(?:${[...wordData.not, ...wordData.letters[i].not].map(str => `(?!${str}).{${str.length}}`).join("|")})`;
 	}
 	return (word: string) => {
 		if (new RegExp(exp).test(word)) {
